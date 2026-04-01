@@ -1,0 +1,344 @@
+/* ============================================================
+   CHAT BOT — SPA Mobile-First CSS
+   Breakpoints: 360px | 768px | 1024px
+   ============================================================ */
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+
+/* ===== BODY ===== */
+body {
+  font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(34, 211, 238, 0.05) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* ===== BARRA FIJA: header + nav ===== */
+.container-header-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: rgba(15, 23, 42, 0.97);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.25);
+  box-shadow: var(--shadow-lg);
+  /* Mobile: columna — header arriba, nav abajo */
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+.header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-lg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.header h1 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  /* Gradiente claro sobre fondo oscuro — siempre visible */
+  background-color: var(--color-text);
+  background-clip: text;
+  text-align: center;
+}
+
+/* ===== NAV ===== */
+.nav {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 var(--space-md);
+  background-color: rgba(30, 41, 59, 0.6);
+}
+
+.link-container {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  height: 100%;
+  flex-wrap: nowrap;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px var(--space-md);
+  border-radius: var(--border-radius-sm);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text);
+  border: 1px solid transparent;
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+  white-space: nowrap;
+  position: relative;
+}
+
+/* Línea animada bajo el link */
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  border-radius: 2px;
+  transition: transform var(--transition-fast);
+}
+
+.link:hover {
+  color: var(--color-text);
+  background-color: rgba(99, 102, 241, 0.14);
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.2);
+}
+
+.link:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.link:active {
+  transform: scale(0.96);
+  background-color: rgba(99, 102, 241, 0.22);
+}
+
+.link.active,
+.link[aria-current="page"] {
+  color: var(--color-accent);
+  background-color: rgba(34, 211, 238, 0.08);
+  border-color: rgba(34, 211, 238, 0.25);
+}
+
+/* ===== APP AREA ===== */
+.app {
+  margin-top: var(--topbar-height);
+  margin-bottom: var(--footer-height);
+  flex: 1;
+  min-height: calc(100vh - var(--topbar-height) - var(--footer-height));
+  padding: var(--space-lg) var(--space-md);
+  overflow-y: auto;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--footer-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Fondo sólido oscuro con texto claro garantizado */
+  background-color: #1e293b;
+  border-top: 1px solid rgba(99, 102, 241, 0.2);
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.4);
+}
+
+footer p {
+  font-size: 0.78rem;
+  font-weight: 500;
+  /* Color claro explícito — no usa var para asegurar visibilidad */
+  color: #e2e8f0;
+  text-align: center;
+  letter-spacing: 0.02em;
+  padding: 0 var(--space-md);
+}
+
+/* ===== SCROLLBAR ===== */
+.app::-webkit-scrollbar {
+  width: 4px;
+}
+.app::-webkit-scrollbar-track {
+  background: transparent;
+}
+.app::-webkit-scrollbar-thumb {
+  background: var(--color-surface-light);
+  border-radius: 4px;
+}
+.app::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* ============================================================
+   BREAKPOINT: <= 360px — Mobile pequeño
+   ============================================================ */
+@media (max-width: 360px) {
+  :root {
+    --topbar-height: 94px;
+  }
+
+  .header {
+    height: 50px;
+  }
+
+  .header h1 {
+    font-size: 1.05rem;
+  }
+
+  .nav {
+    height: 44px;
+  }
+
+  .link {
+    font-size: 0.72rem;
+    padding: 5px var(--space-sm);
+  }
+
+  .link-container {
+    gap: 4px;
+  }
+}
+
+/* ============================================================
+   BREAKPOINT: 768px — Tablet
+   ============================================================ */
+@media (min-width: 768px) {
+  :root {
+    --topbar-height: 116px;
+  }
+
+  .header {
+    height: 68px;
+  }
+
+  .header h1 {
+    font-size: 1.55rem;
+    letter-spacing: 0.08em;
+  }
+
+  .nav {
+    height: 48px;
+  }
+
+  .link {
+    font-size: 0.9rem;
+    padding: 7px var(--space-lg);
+  }
+
+  .link-container {
+    gap: var(--space-md);
+  }
+
+  .app {
+    padding: var(--space-lg) var(--space-xl);
+  }
+
+  footer p {
+    font-size: 0.84rem;
+  }
+}
+
+/* ============================================================
+   BREAKPOINT: 1024px — Desktop
+   Título a la izquierda — Nav a la derecha, en una sola fila
+   ============================================================ */
+@media (min-width: 1024px) {
+  :root {
+    --topbar-height: 72px;
+  }
+
+  /* Una sola fila horizontal */
+  .container-header-nav {
+    flex-direction: row;
+    align-items: center;
+    height: var(--topbar-height);
+    padding: 0 var(--space-2xl);
+  }
+
+  /* Título: izquierda */
+  .header {
+    height: auto;
+    flex: 0 0 auto;
+    justify-content: flex-start;
+    padding: 0;
+    border-bottom: none;
+    /* Separador vertical entre título y nav */
+    border-right: 1px solid rgba(99, 102, 241, 0.22);
+    padding-right: var(--space-xl);
+    margin-right: var(--space-xl);
+  }
+
+  .header h1 {
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  /* Nav: derecha */
+  .nav {
+    flex: 1;
+    height: auto;
+    justify-content: flex-end;
+    padding: 0;
+    overflow: visible;
+    background-color: transparent;
+  }
+
+  .link-container {
+    justify-content: flex-end;
+    gap: var(--space-sm);
+  }
+
+  .link {
+    font-size: 0.88rem;
+    padding: 8px var(--space-lg);
+  }
+
+  /* Contenido centrado con ancho máximo */
+  .app {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: var(--space-xl) var(--space-2xl);
+  }
+
+  footer p {
+    font-size: 0.86rem;
+  }
+}
