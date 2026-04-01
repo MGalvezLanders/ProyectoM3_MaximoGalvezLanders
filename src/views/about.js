@@ -1,4 +1,4 @@
-export function renderContact() {
+export function renderAbout() {
     const app = document.querySelector('#app');
     if (!app) return;
     app.innerHTML = `

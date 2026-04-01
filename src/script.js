@@ -1,4 +1,4 @@
-import { router } from "./router.js";
+import { router, navigateTo } from "./router.js";
 import { setupLinkInterception } from "./navigation.js";
 
 // Listener for back/forward navigation

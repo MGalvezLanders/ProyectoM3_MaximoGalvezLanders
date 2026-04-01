@@ -1,13 +1,13 @@
 import { renderChat } from "./views/chat.js";
 import { renderHome } from "./views/home.js";
-import { renderContact } from "./views/about.j";
+import { renderAbout } from "./views/about.js";
 import { renderNotFound } from "./views/notFound.js";
 
 // routes mapping
 const routes = {
     '/': renderHome,
     '/chat': renderChat,
-    '/about': renderContact
+    '/about': renderAbout
 }
 
 export function router() {
@@ -17,6 +17,6 @@ export function router() {
 }
 
 export function navigateTo(path) {
-    window.pushState(null, '', path);
+    history.pushState(null, null, path);
     router();
 }
