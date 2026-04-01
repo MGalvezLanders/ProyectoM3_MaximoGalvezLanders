@@ -1,8 +1,9 @@
-import { renderChat } from "./views/chat";
-import { renderHome } from "./views/home";
-import { renderContact } from "./views/about";
-import { renderNotFound } from "./views/notFound";
+import { renderChat } from "./views/chat.js";
+import { renderHome } from "./views/home.js";
+import { renderContact } from "./views/about.j";
+import { renderNotFound } from "./views/notFound.js";
 
+// routes mapping
 const routes = {
     '/': renderHome,
     '/chat': renderChat,
@@ -16,6 +17,6 @@ export function router() {
 }
 
 export function navigateTo(path) {
-    window.pushSatete(null, '', path);
+    window.pushState(null, '', path);
     router();
 }
