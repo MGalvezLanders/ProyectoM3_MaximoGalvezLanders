@@ -1,5 +1,6 @@
 export function renderChat() {
-    const app = document.querySelector('.app');
+    const app = document.querySelector('#app');
+    if (!app) return;
     app.innerHTML = `
     <main class="chat">
                 <!-- Header del chat -->
@@ -22,5 +23,5 @@ export function renderChat() {
                     <button class="chat__button">Enviar</button>
                 </div>
             </main>
-        `
+        `;
 }

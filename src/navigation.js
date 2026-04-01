@@ -6,10 +6,8 @@ export function setupLinkInterception() {
         if (!link) return;
 
         const href = link.getAttribute('href');
-        if (href.startsWith('/')) {
-            event.preventDefault();
-            navigateTo(href);
-        }
+        if (!href) return;
+        
         const isModified = event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
         const isNewTab = link.target === '_blank';
         const isExternal = link.host !== window.location.host;
