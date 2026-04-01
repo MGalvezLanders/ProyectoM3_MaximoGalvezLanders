@@ -6,8 +6,8 @@ export function renderChat() {
                 <!-- Header del chat -->
                 <div class="chat__header">
                     <div class="chat__user">
-                    <img src="avatar.jpg" alt="Usuario" class="chat__avatar">
-                    <span class="chat__name">Juan Pérez</span>
+                    <img src="${window.location.origin}/src/img/brian.webp" alt="Usuario" class="chat__avatar">
+                    <span class="chat__name">Brian O'Conner</span>
                     </div>
                 </div>
                 <!-- Mensajes -->
