@@ -161,6 +161,61 @@ body {
   min-height: calc(100vh - var(--topbar-height) - var(--footer-height));
   padding: var(--space-lg) var(--space-md);
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* ===== ASIDE CHARACTERS ===== */
+.aside-characters {
+  width: 100%;
+  padding: var(--space-md);
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.aside-characters__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+  color: var(--color-text);
+}
+
+.aside-characters__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.aside-characters__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-surface-light);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.aside-characters__item:hover {
+  background-color: rgba(99, 102, 241, 0.2);
+  transform: translateX(4px);
+}
+
+.aside-characters__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.aside-characters__name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 /* ===== FOOTER ===== */
@@ -237,6 +292,21 @@ footer p {
 
   .app {
     padding: var(--space-lg) var(--space-xl);
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  /* Aside a la izquierda */
+  .aside-characters {
+    flex: 0 0 280px;
+    height: fit-content;
+    max-height: calc(100vh - var(--topbar-height) - var(--footer-height) - var(--space-lg) * 2);
+    overflow-y: auto;
+  }
+
+  /* Chat a la derecha */
+  .chat {
+    flex: 1;
   }
 
   footer p {
@@ -246,7 +316,7 @@ footer p {
 
 /* ============================================================
    BREAKPOINT: 1024px — Desktop
-   Título a la izquierda — Nav a la derecha, en una sola fila
+   Aside a la izquierda — Chat a la derecha, en una sola fila
    ============================================================ */
 @media (min-width: 1024px) {
   :root {
@@ -300,12 +370,23 @@ footer p {
     padding: 8px var(--space-lg);
   }
 
-  /* Contenido centrado con ancho máximo */
+  /* Contenido: aside a la izquierda, chat a la derecha */
   .app {
-    max-width: 960px;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     padding: var(--space-xl) var(--space-2xl);
+    flex-direction: row;
+    gap: var(--space-xl);
+  }
+
+  .aside-characters {
+    flex: 0 0 300px;
+    max-height: calc(100vh - var(--topbar-height) - var(--footer-height) - var(--space-xl) * 2);
+  }
+
+  .chat {
+    flex: 1;
   }
 
   footer p {
