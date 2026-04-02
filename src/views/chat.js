@@ -18,6 +18,10 @@ export function renderChat() {
                     <img src="${window.location.origin}/src/img/tej.jpg" alt="Tej Parker" class="aside-characters__avatar">
                     <span class="aside-characters__name">Tej Parker</span>
                 </li>
+                <li class="aside-characters__item">
+                    <img src="${window.location.origin}/src/img/roman.webp" alt="Tej Parker" class="aside-characters__avatar">
+                    <span class="aside-characters__name">Roman Pearce</span>
+                </li>
             </ul>
         </div>
 
