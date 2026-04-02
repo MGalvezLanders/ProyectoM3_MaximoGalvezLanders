@@ -127,9 +127,9 @@
 @media (min-width: 768px) {
   .chat {
     width: 100%;
-    max-width: 100%;
+    max-width: none;
     height: 70vh;
-    border-radius: 0; /* ocupa todo */
+    border-radius: var(--border-radius-lg);
   }
 }
 
