@@ -1,6 +1,6 @@
 const chatContainer = document.querySelector('#chat');
 
-export function renderChatToretto() {
+export function renderChatTj() {
     if (!chatContainer) return;
     chatContainer.innerHTML = `
             <!-- Header del chat -->

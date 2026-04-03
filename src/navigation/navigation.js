@@ -1,4 +1,4 @@
-import { navigateTo } from './router.js';
+import { navigateTo } from '../routes/router.js';
 
 export function setupLinkInterception() {
   document.addEventListener('click', (event) => {

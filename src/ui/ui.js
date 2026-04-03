@@ -1,8 +1,13 @@
-const buttonChat = document.querySelector('.aside-characters__item');
+import { chatRouter, chatNavigateTo } from "../routes/chatRouter.js";
+import { chatSetupLinkInterception } from "../navigation/chatNavigation.js";
 
-export function chatEvent() {
-    if (!buttonChat) return;
-    buttonChat.addEventListener('click', () => {
-        window.location.hash = '#/chat';
-    });
-}
+// Listener for back/forward navigation
+window.addEventListener('popstate', () =>  {
+    chatRouter();
+});
+
+// Intercept link clicks
+chatSetupLinkInterception();
+
+// Render the initial route
+chatRouter();
