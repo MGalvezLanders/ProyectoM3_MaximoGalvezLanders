@@ -166,6 +166,33 @@ body {
   gap: var(--space-lg);
 }
 
+/* ===== NOT FOUND AREA ===== */
+
+.chat-not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.not-found-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-error);
+  margin-bottom: var(--space-md);
+  padding: 1rem;
+}
+
+.not-found-description {
+  font-size: 1rem;
+  color: var(--color-text);
+  padding: 0 var(--space-md);
+}
+
 /* ===== ASIDE CHARACTERS ===== */
 .aside-characters {
   width: 100%;

@@ -33,3 +33,37 @@ export function renderChat() {
     <main id="chat" class="chat"></main>
         `;
 }
+
+export function renderCharacterChat(characterName) {
+    const chatMain = document.querySelector('#chat');
+    if (!chatMain) return;
+
+    // Mapeo de personajes
+    const characters = {
+        brian: { name: 'Brian O\'Conner', img: 'brian.webp' },
+        toretto: { name: 'Dominic Toretto', img: 'dominic.avif' },
+        tj: { name: 'Tej Parker', img: 'tej.jpg' },
+        roman: { name: 'Roman Pearce', img: 'roman.webp' }
+    };
+
+    const character = characters[characterName];
+    if (!character) return;
+
+    chatMain.innerHTML = `
+        <div class="chat__header">
+            <div class="chat__user">
+                <img src="${window.location.origin}/src/img/${character.img}" alt="${character.name}" class="chat__avatar">
+                <span class="chat__name">${character.name}</span>
+            </div>
+        </div>
+        <div class="chat__messages"></div>
+        <div class="chat__input">
+            <input
+                type="text"
+                class="chat__field"
+                placeholder="Escribí un mensaje..."
+            >
+            <button class="chat__button">Enviar</button>
+        </div>
+    `;
+}

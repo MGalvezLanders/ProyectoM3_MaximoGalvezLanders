@@ -1,4 +1,4 @@
-import { renderChat } from "../views/chat.js";
+import { renderChat, renderCharacterChat } from "../views/chat.js";
 import { renderHome } from "../views/home.js";
 import { renderAbout } from "../views/about.js";
 import { renderNotFound } from "../views/notFound.js";
@@ -12,6 +12,14 @@ const routes = {
 
 export function router() {
     const path = window.location.pathname;
+    
+    // Detectar rutas dinámicas /chat/:character
+    if (path.startsWith('/chat/')) {
+        const characterName = path.split('/')[2];
+        renderCharacterChat(characterName);
+        return;
+    }
+    
     const render = routes[path] || renderNotFound;
     render();
 }
