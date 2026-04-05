@@ -183,8 +183,7 @@
 
 @media (min-width: 1024px) {
   .chat {
-    width: 100%;
-    max-width: 900px; /* 🔥 ocupa casi todo pero no full */
+    width: 500px; /* Ancho fijo para evitar expansión */
     height: 70vh;
 
     border-radius: var(--border-radius-lg);
