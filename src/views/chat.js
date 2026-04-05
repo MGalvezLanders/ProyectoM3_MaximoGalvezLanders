@@ -1,11 +1,18 @@
 async function sendMessage(message, characterName) {
-    const response = await fetch("http://localhost:3000/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message, character: characterName }) // pasás el personaje
-    });
-    const data = await response.json();
-    return data.reply;
+    try {
+        const response = await fetch("http://localhost:3000/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message, character: characterName }) // pasás el personaje
+        });
+        const data = await response.json();
+        if (!response.ok) {
+            return data.error || "Error en el servidor";
+        }
+        return data.reply;
+    } catch (error) {
+        return "Error de conexión";
+    }
 }
 
 export function renderChat() {

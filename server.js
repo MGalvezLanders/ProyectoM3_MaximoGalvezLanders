@@ -12,29 +12,36 @@ app.post("/chat", async (req, res) => {
   const userMessage = req.body.message;
 
   try {
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": process.env.ANTHROPIC_API_KEY,
-        "anthropic-version": "2023-06-01"
-      },
-      body: JSON.stringify({
-        model: "claude-3-haiku-20240307",
-        max_tokens: 300,
-        messages: [
-          {
-            role: "user",
-            content: userMessage
-          }
-        ]
-      })
-    });
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [{ text: userMessage }]
+            }
+          ]
+        })
+      }
+    );
 
     const data = await response.json();
 
+    console.log('Gemini response status:', response.status);
+    console.log('Gemini data:', data);
+
+    // Verificar que la respuesta sea válida
+    if (!response.ok || !data.candidates) {
+      console.error("Error de Gemini:", data);
+      return res.status(500).json({ error: "Error al llamar a Gemini" });
+    }
+
     res.json({
-      reply: data.content[0].text
+      reply: data.candidates[0].content.parts[0].text
     });
 
   } catch (error) {
