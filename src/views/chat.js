@@ -6,11 +6,13 @@ async function sendMessage(message, characterName) {
             body: JSON.stringify({ message, character: characterName }) // pasás el personaje
         });
         const data = await response.json();
+        console.log("Respuesta del servidor:", data);
         if (!response.ok) {
             return data.error || "Error en el servidor";
         }
         return data.reply;
     } catch (error) {
+        console.log("Error en fetch:", error);
         return "Error de conexión";
     }
 }
