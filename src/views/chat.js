@@ -1,3 +1,13 @@
+async function sendMessage(message, characterName) {
+    const response = await fetch("http://localhost:3000/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message, character: characterName }) // pasás el personaje
+    });
+    const data = await response.json();
+    return data.reply;
+}
+
 export function renderChat() {
     const app = document.querySelector('#app');
     if (!app) return;
@@ -57,13 +67,34 @@ export function renderCharacterChat(characterName) {
             </div>
         </div>
         <div class="chat__messages"></div>
-        <div class="chat__input">
+        <div class="chat__input" id="chat">
             <input
                 type="text"
                 class="chat__field"
                 placeholder="Escribí un mensaje..."
+                id="input"
             >
-            <button class="chat__button">Enviar</button>
-        </div>
-    `;
+            <button class="chat__button" id="send">Enviar</button>
+            </div>
+            `;
+            const input = document.querySelector("#input");
+            const button = document.querySelector("#send");
+            const messagesContainer = document.querySelector(".chat__messages");
+            
+            input.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") button.click();
+            });
+    button.addEventListener("click", async () => {
+        const userText = input.value;
+        input.value = "";
+
+        messagesContainer.innerHTML += `<p class="chat__message--sent"> ${userText}</p>`;
+
+        const botReply = await sendMessage(userText, characterName);
+
+        messagesContainer.innerHTML += `<p class="chat__message--received"> ${botReply}</p>`;
+
+    });
 }
+
+
