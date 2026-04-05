@@ -11,7 +11,12 @@ const routes = {
 }
 
 export function router() {
-    const path = window.location.pathname;
+    let path = window.location.pathname;
+
+    // Normalizar acceso directo desde Live Server (/src/index.html)
+    if (path.endsWith('/index.html') || path === '/src' || path === '/src/') {
+        path = '/';
+    }
     
     // Detectar rutas dinámicas /chat/:character
     if (path.startsWith('/chat/')) {
