@@ -1,6 +1,6 @@
 async function sendMessage(message, characterName) {
     try {
-        const response = await fetch("http://localhost:3000/chat", {
+        const response = await fetch("http://localhost:3000/api/chatServer", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message, character: characterName }) // pasás el personaje
