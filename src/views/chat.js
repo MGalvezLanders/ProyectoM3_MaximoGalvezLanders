@@ -26,22 +26,22 @@ export function renderChat() {
             <h2 class="aside-characters__title">Personajes</h2>
             <ul class="aside-characters__list">
                 <li class="aside-characters__item">
-                    <img src="${window.location.origin}/src/img/brian.webp" alt="Brian O'Conner" class="aside-characters__avatar">
+                    <img src="${window.location.origin}/img/brian.webp" alt="Brian O'Conner" class="aside-characters__avatar">
                     <span class="aside-characters__name">Brian O'Conner</span>
                     <a href="/chat/brian" class="chat__link">Chatear</a>
                 </li>
                 <li class="aside-characters__item">
-                    <img src="${window.location.origin}/src/img/dominic.avif" alt="Dominic Toretto" class="aside-characters__avatar">
+                    <img src="${window.location.origin}/img/dominic.avif" alt="Dominic Toretto" class="aside-characters__avatar">
                     <span class="aside-characters__name">Dominic Toretto</span>
                     <a href="/chat/toretto" class="chat__link">Chatear</a>
                 </li>
                 <li class="aside-characters__item">
-                    <img src="${window.location.origin}/src/img/tej.jpg" alt="Tej Parker" class="aside-characters__avatar">
+                    <img src="${window.location.origin}/img/tej.jpg" alt="Tej Parker" class="aside-characters__avatar">
                     <span class="aside-characters__name">Tej Parker</span>
                     <a href="/chat/tj" class="chat__link">Chatear</a>
                 </li>
                 <li class="aside-characters__item">
-                    <img src="${window.location.origin}/src/img/roman.webp" alt="Roman Pearce" class="aside-characters__avatar">
+                    <img src="${window.location.origin}/img/roman.webp" alt="Roman Pearce" class="aside-characters__avatar">
                     <span class="aside-characters__name">Roman Pearce</span>
                     <a href="/chat/roman" class="chat__link">Chatear</a>
                 </li>
@@ -71,7 +71,7 @@ export function renderCharacterChat(characterName) {
     chatMain.innerHTML = `
         <div class="chat__header">
             <div class="chat__user">
-                <img src="${window.location.origin}/src/img/${character.img}" alt="${character.name}" class="chat__avatar">
+                <img src="${window.location.origin}/img/${character.img}" alt="${character.name}" class="chat__avatar">
                 <span class="chat__name">${character.name}</span>
             </div>
         </div>
