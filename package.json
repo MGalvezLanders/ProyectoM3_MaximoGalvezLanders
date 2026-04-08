@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "supertest": "^7.2.2",
+    "vite": "^8.0.7",
     "vitest": "^4.1.2"
   },
   "name": "proyectom3-maximogalezlanders_chatbot",
@@ -14,6 +15,7 @@
     "@google/generative-ai": "^0.24.1"
   },
   "scripts": {
+    "dev": "vite",
     "test": "vitest run"
   },
   "repository": {

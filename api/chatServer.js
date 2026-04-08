@@ -1,6 +1,5 @@
-// api/chatServer.js
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import personajes from '../charactersRole.js';
+import personajes from './charactersRole.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
