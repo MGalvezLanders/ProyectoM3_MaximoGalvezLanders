@@ -19,7 +19,7 @@ async function sendMessage(message, characterName) {
     }
 }
 
-export function renderChat() {
+export function renderChat(withChat = false) {
     const app = document.querySelector('#app');
     if (!app) return;
     app.innerHTML = `
@@ -55,7 +55,7 @@ export function renderChat() {
         </div>
 
     </aside>
-    <main id="chat" class="chat"></main>
+    ${withChat ? '<main id="chat" class="chat"></main>' : ''}
         `;
         
 }

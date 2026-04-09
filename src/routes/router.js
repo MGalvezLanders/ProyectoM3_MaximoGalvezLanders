@@ -23,8 +23,10 @@ export function router() {
         const characterName = path.split('/')[2];
         if (characterName) {
             document.body.classList.add('chat-active');
+            renderChat(true); // con main
         } else {
             document.body.classList.remove('chat-active');
+            renderChat(false); // sin main
         }
         renderCharacterChat(characterName);
         return;
