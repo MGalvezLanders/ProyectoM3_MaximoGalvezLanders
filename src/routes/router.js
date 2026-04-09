@@ -21,10 +21,16 @@ export function router() {
     // Detectar rutas dinámicas /chat/:character
     if (path.startsWith('/chat/')) {
         const characterName = path.split('/')[2];
+        if (characterName) {
+            document.body.classList.add('chat-active');
+        } else {
+            document.body.classList.remove('chat-active');
+        }
         renderCharacterChat(characterName);
         return;
     }
     
+    document.body.classList.remove('chat-active');
     const render = routes[path] || renderNotFound;
     render();
 }

@@ -1,3 +1,5 @@
+import { navigateTo } from '../routes/router.js';
+
 async function sendMessage(message, characterName) {
     try {
         const response = await fetch("/api/chatServer", {
@@ -51,11 +53,12 @@ export function renderChat() {
     </aside>
     <main id="chat" class="chat"></main>
         `;
+        
 }
 
 export function renderCharacterChat(characterName) {
     const chatMain = document.querySelector('#chat');
-    if (!chatMain) return;
+    if (!chatMain)return;
 
     // Mapeo de personajes
     const characters = {
@@ -70,6 +73,7 @@ export function renderCharacterChat(characterName) {
 
     chatMain.innerHTML = `
         <div class="chat__header">
+            <button class="back-button">← Volver</button>
             <div class="chat__user">
                 <img src="${window.location.origin}/img/${character.img}" alt="${character.name}" class="chat__avatar">
                 <span class="chat__name">${character.name}</span>
@@ -86,6 +90,9 @@ export function renderCharacterChat(characterName) {
             <button class="chat__button" id="send">Enviar</button>
             </div>
             `;
+            const backButton = document.querySelector('.back-button');
+            backButton.addEventListener('click', () => navigateTo('/chat'));
+            
             const input = document.querySelector("#input");
             const button = document.querySelector("#send");
             const messagesContainer = document.querySelector(".chat__messages");
