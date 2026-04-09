@@ -2,8 +2,7 @@
 .chat {
   width: 100%;
   max-width: 420px;
-  height: 70vh;
-  height: 70dvh;
+  flex: 1;
 
   display: flex;
   flex-direction: column;
@@ -70,7 +69,6 @@
   white-space: normal;
 }
 
-/* Mensaje enviado (usuario) */
 /* Mensaje enviado (usuario) */
 .chat__message--sent {
   align-self: flex-end;
@@ -146,35 +144,6 @@
 .chat__button:hover {
   background-color: var(--color-primary-hover);
 }
-
-/* Link de chat en la lista de personajes */
-.chat__link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: var(--space-xs);
-  padding: 0.35rem 0.7rem;
-  border-radius: var(--border-radius-sm);
-  border: 1px solid rgba(34, 211, 238, 0.35);
-  background-color: rgba(34, 211, 238, 0.15);
-  color: var(--color-accent);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.85rem;
-  transition: all var(--transition-fast);
-}
-
-.chat__link:hover {
-  background-color: rgba(34, 211, 238, 0.3);
-  border-color: rgba(34, 211, 238, 0.6);
-  transform: translateY(-1px);
-}
-
-.chat__link:active {
-  transform: translateY(0);
-  background-color: rgba(34, 211, 238, 0.45);
-}
-
 
 @media (min-width: 768px) {
   .chat {

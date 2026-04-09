@@ -27,26 +27,30 @@ export function renderChat() {
         <div>
             <h2 class="aside-characters__title">Personajes</h2>
             <ul class="aside-characters__list">
+            <a href="/chat/brian">
                 <li class="aside-characters__item">
                     <img src="${window.location.origin}/img/brian.webp" alt="Brian O'Conner" class="aside-characters__avatar">
                     <span class="aside-characters__name">Brian O'Conner</span>
-                    <a href="/chat/brian" class="chat__link">Chatear</a>
                 </li>
-                <li class="aside-characters__item">
-                    <img src="${window.location.origin}/img/dominic.avif" alt="Dominic Toretto" class="aside-characters__avatar">
-                    <span class="aside-characters__name">Dominic Toretto</span>
-                    <a href="/chat/toretto" class="chat__link">Chatear</a>
-                </li>
-                <li class="aside-characters__item">
-                    <img src="${window.location.origin}/img/tej.jpg" alt="Tej Parker" class="aside-characters__avatar">
-                    <span class="aside-characters__name">Tej Parker</span>
-                    <a href="/chat/tj" class="chat__link">Chatear</a>
-                </li>
-                <li class="aside-characters__item">
-                    <img src="${window.location.origin}/img/roman.webp" alt="Roman Pearce" class="aside-characters__avatar">
-                    <span class="aside-characters__name">Roman Pearce</span>
-                    <a href="/chat/roman" class="chat__link">Chatear</a>
-                </li>
+            </a>
+            <a href="/chat/toretto">
+                    <li class="aside-characters__item">
+                        <img src="${window.location.origin}/img/dominic.avif" alt="Dominic Toretto" class="aside-characters__avatar">
+                        <span class="aside-characters__name">Dominic Toretto</span>
+                    </li>
+                </a>
+                <a href="/chat/tj">
+                    <li class="aside-characters__item">
+                        <img src="${window.location.origin}/img/tej.jpg" alt="Tej Parker" class="aside-characters__avatar">
+                        <span class="aside-characters__name">Tej Parker</span>
+                    </li>
+                </a>
+                <a href="/chat/roman">
+                    <li class="aside-characters__item">
+                        <img src="${window.location.origin}/img/roman.webp" alt="Roman Pearce" class="aside-characters__avatar">
+                        <span class="aside-characters__name">Roman Pearce</span>
+                    </li>
+                </a>
             </ul>
         </div>
 
