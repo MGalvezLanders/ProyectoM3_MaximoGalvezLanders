@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { message, character } = req.body;
+    const { message, character, history = [] } = req.body;
     const systemPrompt = personajes[character] || personajes.brian;
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -16,7 +16,18 @@ export default async function handler(req, res) {
       systemInstruction: systemPrompt
     });
 
-    const result = await model.generateContent(message);
+     // Convertir el historial al formato que espera Gemini
+    const formattedHistory = history.map(msg => ({
+      role: msg.role,        // 'user' o 'model'
+      parts: [{ text: msg.text }]
+    }));
+
+     // Iniciar chat con el historial previo
+    const chat = model.startChat({
+      history: formattedHistory
+    });
+
+    const result = await model.sendMessage(message);
     const text = result.response.text();
 
     return res.status(200).json({ reply: text });

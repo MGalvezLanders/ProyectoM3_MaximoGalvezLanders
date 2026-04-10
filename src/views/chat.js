@@ -1,17 +1,29 @@
 import { navigateTo } from '../routes/router.js';
 
-async function sendMessage(message, characterName) {
+let history = [];
+
+function resetHistory() {
+  history = [];
+}
+
+async function sendMessage(userMessage, characterName) {
     try {
         const response = await fetch("/api/chatServer", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ message, character: characterName }) // pasás el personaje
+            body: JSON.stringify({ message: userMessage, character: characterName, history: history }) // pasás el personaje
         });
         const data = await response.json();
-        console.log("Respuesta del servidor:", data);
+
+        history.push(
+            { role: 'user', text: userMessage },
+            { role: 'model', text: data.reply }
+        );
+
         if (!response.ok) {
             return data.error || "Error en el servidor";
         }
+
         return data.reply;
     } catch (error) {
         console.log("Error en fetch:", error);
@@ -57,12 +69,14 @@ export function renderChat(withChat = false) {
     </aside>
     ${withChat ? '<main id="chat" class="chat"></main>' : ''}
         `;
-        
+
 }
 
 export function renderCharacterChat(characterName) {
     const chatMain = document.querySelector('#chat');
-    if (!chatMain)return;
+    if (!chatMain) return;
+
+    resetHistory(); // Limpiar el historial al cargar un nuevo personaje
 
     // Mapeo de personajes
     const characters = {
@@ -94,16 +108,16 @@ export function renderCharacterChat(characterName) {
             <button class="chat__button" id="send">Enviar</button>
             </div>
             `;
-            const backButton = document.querySelector('.back-button');
-            backButton.addEventListener('click', () => navigateTo('/chat'));
-            
-            const input = document.querySelector("#input");
-            const button = document.querySelector("#send");
-            const messagesContainer = document.querySelector(".chat__messages");
-            
-            input.addEventListener("keydown", (e) => {
-                if (e.key === "Enter") button.click();
-            });
+    const backButton = document.querySelector('.back-button');
+    backButton.addEventListener('click', () => navigateTo('/chat'));
+
+    const input = document.querySelector("#input");
+    const button = document.querySelector("#send");
+    const messagesContainer = document.querySelector(".chat__messages");
+
+    input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") button.click();
+    });
     button.addEventListener("click", async () => {
         const userText = input.value;
         input.value = "";
