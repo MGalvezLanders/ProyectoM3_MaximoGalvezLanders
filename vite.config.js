@@ -5,5 +5,13 @@ export default defineConfig({
   build: {
     outDir: '../dist'
   },
-  publicDir: '../public'  // o 'public' si la tenés dentro de src
+  publicDir: '../public',
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true
+      }
+    }
+  }
 })
