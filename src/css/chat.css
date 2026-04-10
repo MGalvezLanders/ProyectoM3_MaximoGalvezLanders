@@ -56,6 +56,7 @@
 
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   overflow-y: auto;
   overflow-x: hidden;
   width: 100%;
@@ -113,6 +114,7 @@
 /* Campo de texto */
 .chat__field {
   flex: 1;
+  font-size: 1rem;
   padding: var(--space-sm) var(--space-md);
 
   border-radius: var(--border-radius-md);

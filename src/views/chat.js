@@ -120,14 +120,16 @@ export function renderCharacterChat(characterName) {
     });
     button.addEventListener("click", async () => {
         const userText = input.value;
+        if (!userText.trim()) return;
         input.value = "";
 
         messagesContainer.innerHTML += `<p class="chat__message--sent"> ${userText}</p>`;
+        messagesContainer.scrollTop = messagesContainer.scrollHeight; // scroll al enviar
 
         const botReply = await sendMessage(userText, characterName);
 
         messagesContainer.innerHTML += `<p class="chat__message--received"> ${botReply}</p>`;
-
+        messagesContainer.scrollTop = messagesContainer.scrollHeight; // scroll al recibir
     });
 }
 
