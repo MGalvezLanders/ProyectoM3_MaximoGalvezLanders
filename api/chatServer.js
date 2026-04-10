@@ -27,7 +27,7 @@ export default async function handler(req, res) {
       history: formattedHistory
     });
 
-    const result = await model.sendMessage(message);
+    const result = await chat.sendMessage(message);
     const text = result.response.text();
 
     return res.status(200).json({ reply: text });
