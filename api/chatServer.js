@@ -1,5 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import personajes from './charactersRole.js';
+import { formatHistory, getSystemPrompt } from './chatServerUtils.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -8,7 +9,7 @@ export default async function handler(req, res) {
 
   try {
     const { message, character, history = [] } = req.body;
-    const systemPrompt = personajes[character] || personajes.brian;
+     const systemPrompt = getSystemPrompt(character, personajes);
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({
@@ -16,15 +17,9 @@ export default async function handler(req, res) {
       systemInstruction: systemPrompt
     });
 
-     // Convertir el historial al formato que espera Gemini
-    const formattedHistory = history.map(msg => ({
-      role: msg.role,        // 'user' o 'model'
-      parts: [{ text: msg.text }]
-    }));
-
      // Iniciar chat con el historial previo
     const chat = model.startChat({
-      history: formattedHistory
+      history: formatHistory(history)
     });
 
     const result = await chat.sendMessage(message);

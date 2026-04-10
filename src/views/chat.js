@@ -1,4 +1,6 @@
+import { build } from 'vite';
 import { navigateTo } from '../routes/router.js';
+import { buildHistory, isValidMessage } from '../utils/chatUtils.js';
 
 let history = [];
 
@@ -15,10 +17,7 @@ async function sendMessage(userMessage, characterName) {
         });
         const data = await response.json();
 
-        history.push(
-            { role: 'user', text: userMessage },
-            { role: 'model', text: data.reply }
-        );
+        buildHistory(history, userMessage, data.reply); // Actualizás el historial con el mensaje del usuario y la respuesta del bot
 
         if (!response.ok) {
             return data.error || "Error en el servidor";
@@ -120,7 +119,9 @@ export function renderCharacterChat(characterName) {
     });
     button.addEventListener("click", async () => {
         const userText = input.value;
-        if (!userText.trim()) return;
+
+        isValidMessage(userText); // Validás el mensaje antes de enviarlo
+        
         input.value = "";
 
         messagesContainer.innerHTML += `<p class="chat__message--sent"> ${userText}</p>`;
