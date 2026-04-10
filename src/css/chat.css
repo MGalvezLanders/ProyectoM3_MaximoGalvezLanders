@@ -1,5 +1,8 @@
 /* Chat */
 .chat {
+  position: relative;
+  overflow-y: auto;
+  height: 100dvh;
   width: 100%;
   max-width: 420px;
   flex: 1;
@@ -10,11 +13,11 @@
   background-color: var(--color-surface);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-lg);
-  overflow: hidden;
 }
 
 /* HEADER */
 .chat__header {
+  padding: var(--space-md);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -49,7 +52,7 @@
 .chat__messages {
   flex: 1;
   padding: var(--space-md);
-  overflow-y: auto;
+  overflow-y: visible;
 
   display: flex;
   flex-direction: column;
@@ -151,7 +154,8 @@
   .chat {
     width: 100%;
     max-width: none;
-    height: 70vh;
+    height: auto;
+    overflow: hidden;
     border-radius: var(--border-radius-lg);
   }
 }
