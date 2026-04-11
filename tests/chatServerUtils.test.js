@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { formatHistory, getSystemPrompt } from '../api/chatServerUtils.js';
+import { formatHistory, getSystemPrompt } from '../api/apiUtils/chatServerUtils.js';
 
 const personajesMock = {
   brian: 'Sos Brian O\'Conner',

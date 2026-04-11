@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import personajes from './charactersRole.js';
-import { formatHistory, getSystemPrompt } from './chatServerUtils.js';
+import { formatHistory, getSystemPrompt } from './apiUtils/chatServerUtils.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
