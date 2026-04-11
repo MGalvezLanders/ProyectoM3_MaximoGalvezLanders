@@ -16,7 +16,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "test": "vitest run"
+    "test": "vitest"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,9 @@
   "author": "",
   "license": "ISC",
   "type": "module",
+  "vitest": {
+    "environment": "node"
+  },
   "bugs": {
     "url": "https://github.com/MGalvezLanders/ProyectoM3_MaximoGalvezLanders/issues"
   },
