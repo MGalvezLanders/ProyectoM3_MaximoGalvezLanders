@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "supertest": "^7.2.2",
-    "vite": "^8.0.7",
+    "vite": "^6.4.2",
     "vitest": "^4.1.2"
   },
   "name": "proyectom3-maximogalezlanders_chatbot",
@@ -16,7 +16,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "repository": {
     "type": "git",
