@@ -182,6 +182,30 @@ Crear un endpoint en Node.js que simule respuestas de personajes con diferentes 
 
 ---
 
+## Evidencia de uso de IA
+
+### 📌 Error de módulos en JavaScript
+
+### Prompt
+- A que se refiere este error script.js:1 Uncaught SyntaxError: Cannot use import statement outside a module (at script.js:1:1)
+
+
+![Error import statement](./public/imgIA/ChatGPT-Consulta%20de%20error%20-1.png)
+
+---
+
+### 💬 Flujo de implementación del chatbot
+![Flujo chatbot](./public/imgIA/Cloude-Ayuda%20con%20integracion%20IA-0.png)
+
+---
+
+### 🤖 Integración con IA (explicación técnica)
+![Integracion IA](./public/imgIA/Claude-IntegraionIA-1.png)
+
+
+
+
+
 ## 🚀 Características principales
 
 - Interfaz simple y clara  
