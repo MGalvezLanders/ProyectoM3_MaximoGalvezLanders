@@ -2,8 +2,8 @@
 export function buildHistory(history, userMessage, botReply) {
   return [
     ...history,
-    { role: 'user', text: userMessage },
-    { role: 'model', text: botReply }
+    { role: "user", text: userMessage },
+    { role: "model", text: botReply },
   ];
 }
 

@@ -1,5 +1,5 @@
-import { navigateTo } from '../routes/router.js';
-import { buildHistory, isValidMessage } from '../utils/chatUtils.js';
+import { navigateTo } from "../routes/router.js";
+import { buildHistory, isValidMessage } from "../utils/chatUtils.js";
 
 let history = [];
 
@@ -8,31 +8,35 @@ function resetHistory() {
 }
 
 async function sendMessage(userMessage, characterName) {
-    try {
-        const response = await fetch("/api/chatServer", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ message: userMessage, character: characterName, history: history }) // pasás el personaje
-        });
-        const data = await response.json();
+  try {
+    const response = await fetch("/api/chatServer", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message: userMessage,
+        character: characterName,
+        history: history,
+      }), // pasás el personaje
+    });
+    const data = await response.json();
 
-        history = buildHistory(history, userMessage, data.reply); // Actualizás el historial con el mensaje del usuario y la respuesta del bot
+    history = buildHistory(history, userMessage, data.reply); // Actualizás el historial con el mensaje del usuario y la respuesta del bot
 
-        if (!response.ok) {
-            return data.error || "Error en el servidor";
-        }
-
-        return data.reply;
-    } catch (error) {
-        console.log("Error en fetch:", error);
-        return "Error de conexión";
+    if (!response.ok) {
+      return data.error || "Error en el servidor";
     }
+
+    return data.reply;
+  } catch (error) {
+    console.log("Error en fetch:", error);
+    return "Error de conexión";
+  }
 }
 
 export function renderChat(withChat = false) {
-    const app = document.querySelector('#app');
-    if (!app) return;
-    app.innerHTML = `
+  const app = document.querySelector("#app");
+  if (!app) return;
+  app.innerHTML = `
     <aside class="aside-characters">
         <div>
             <h2 class="aside-characters__title">Personajes</h2>
@@ -65,29 +69,28 @@ export function renderChat(withChat = false) {
         </div>
 
     </aside>
-    ${withChat ? '<main id="chat" class="chat"></main>' : ''}
+    ${withChat ? '<main id="chat" class="chat"></main>' : ""}
         `;
-
 }
 
 export function renderCharacterChat(characterName) {
-    const chatMain = document.querySelector('#chat');
-    if (!chatMain) return;
+  const chatMain = document.querySelector("#chat");
+  if (!chatMain) return;
 
-    resetHistory(); // Limpiar el historial al cargar un nuevo personaje
+  resetHistory(); // Limpiar el historial al cargar un nuevo personaje
 
-    // Mapeo de personajes
-    const characters = {
-        brian: { name: 'Brian O\'Conner', img: 'brian.webp' },
-        toretto: { name: 'Dominic Toretto', img: 'dominic.avif' },
-        tj: { name: 'Tej Parker', img: 'tej.jpg' },
-        roman: { name: 'Roman Pearce', img: 'roman.webp' }
-    };
+  // Mapeo de personajes
+  const characters = {
+    brian: { name: "Brian O'Conner", img: "brian.webp" },
+    toretto: { name: "Dominic Toretto", img: "dominic.avif" },
+    tj: { name: "Tej Parker", img: "tej.jpg" },
+    roman: { name: "Roman Pearce", img: "roman.webp" },
+  };
 
-    const character = characters[characterName];
-    if (!character) return;
+  const character = characters[characterName];
+  if (!character) return;
 
-    chatMain.innerHTML = `
+  chatMain.innerHTML = `
         <div class="chat__header">
             <button class="back-button">← Volver</button>
             <div class="chat__user">
@@ -106,29 +109,27 @@ export function renderCharacterChat(characterName) {
             <button class="chat__button" id="send">Enviar</button>
             </div>
             `;
-    const backButton = document.querySelector('.back-button');
-    backButton.addEventListener('click', () => navigateTo('/chat'));
+  const backButton = document.querySelector(".back-button");
+  backButton.addEventListener("click", () => navigateTo("/chat"));
 
-    const input = document.querySelector("#input");
-    const button = document.querySelector("#send");
-    const messagesContainer = document.querySelector(".chat__messages");
+  const input = document.querySelector("#input");
+  const button = document.querySelector("#send");
+  const messagesContainer = document.querySelector(".chat__messages");
 
-    input.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") button.click();
-    });
-    button.addEventListener("click", async () => {
-        const userText = input.value;
-        if (!isValidMessage(userText)) return;        
-        input.value = "";
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") button.click();
+  });
+  button.addEventListener("click", async () => {
+    const userText = input.value;
+    if (!isValidMessage(userText)) return;
+    input.value = "";
 
-        messagesContainer.innerHTML += `<p class="chat__message--sent"> ${userText}</p>`;
-        messagesContainer.scrollTop = messagesContainer.scrollHeight; // scroll al enviar
+    messagesContainer.innerHTML += `<p class="chat__message--sent"> ${userText}</p>`;
+    messagesContainer.scrollTop = messagesContainer.scrollHeight; // scroll al enviar
 
-        const botReply = await sendMessage(userText, characterName);
+    const botReply = await sendMessage(userText, characterName);
 
-        messagesContainer.innerHTML += `<p class="chat__message--received"> ${botReply}</p>`;
-        messagesContainer.scrollTop = messagesContainer.scrollHeight; // scroll al recibir
-    });
+    messagesContainer.innerHTML += `<p class="chat__message--received"> ${botReply}</p>`;
+    messagesContainer.scrollTop = messagesContainer.scrollHeight; // scroll al recibir
+  });
 }
-
-

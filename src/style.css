@@ -4,20 +4,22 @@
    ============================================================ */
 
 /* ===== RESET & BASE ===== */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
-
 /* ===== BODY ===== */
 body {
-  font-family: 'Segoe UI', 'SF Pro Text', sans-serif;
+  font-family: "Segoe UI", "SF Pro Text", sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
   font-size: 16px;
@@ -26,8 +28,16 @@ body {
   display: flex;
   flex-direction: column;
   background-image:
-    radial-gradient(ellipse at 20% 10%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 90%, rgba(34, 211, 238, 0.05) 0%, transparent 50%);
+    radial-gradient(
+      ellipse at 20% 10%,
+      rgba(99, 102, 241, 0.08) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 80% 90%,
+      rgba(34, 211, 238, 0.05) 0%,
+      transparent 50%
+    );
   background-attachment: fixed;
 }
 
@@ -118,7 +128,7 @@ body {
 
 /* Línea animada bajo el link */
 .link::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 2px;
   left: 50%;
@@ -236,7 +246,7 @@ body {
 
 .aside-characters__item {
   display: flex;
-  align-items: center; 
+  align-items: center;
   gap: var(--space-md);
   padding: var(--space-md);
   border-radius: var(--border-radius-md);
@@ -324,7 +334,6 @@ footer p {
 .chat {
   display: none;
 }
-
 
 /* ============================================================
    BREAKPOINT: 768px — Tablet
@@ -429,7 +438,9 @@ footer p {
 
   .aside-characters {
     flex: 0 0 300px;
-    max-height: calc(100vh - var(--topbar-height) - var(--footer-height) - var(--space-xl) * 2);
+    max-height: calc(
+      100vh - var(--topbar-height) - var(--footer-height) - var(--space-xl) * 2
+    );
   }
 
   .chat {

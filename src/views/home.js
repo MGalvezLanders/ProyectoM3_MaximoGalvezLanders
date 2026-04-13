@@ -1,7 +1,7 @@
 export function renderHome() {
-    const app = document.querySelector('#app');
-    if (!app) return;
-    app.innerHTML = `
+  const app = document.querySelector("#app");
+  if (!app) return;
+  app.innerHTML = `
         <div class="middle-desktop">
             <h2>Bienvenidos al Chat Bot</h2>
             <p>Hola somos el equipo de Rapidos y Furiosos habla con nosotros para obtener información sobre nuestros personajes y historias.

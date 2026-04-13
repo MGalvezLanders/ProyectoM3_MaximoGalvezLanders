@@ -9,8 +9,8 @@ const replies = [
 ];
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
   // Parseo del body
@@ -20,7 +20,7 @@ export default async function handler(req, res) {
 
   const { message, character, history = [] } = body;
 
-  await new Promise(r => setTimeout(r, 600));
+  await new Promise((r) => setTimeout(r, 600));
 
   const reply = replies[Math.floor(Math.random() * replies.length)];
 

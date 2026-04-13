@@ -1,7 +1,7 @@
 export function formatHistory(history) {
-  return history.map(msg => ({
+  return history.map((msg) => ({
     role: msg.role,
-    parts: [{ text: msg.text }]
+    parts: [{ text: msg.text }],
   }));
 }
 
