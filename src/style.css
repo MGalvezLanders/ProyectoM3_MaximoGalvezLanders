@@ -194,6 +194,24 @@ body {
   gap: var(--space-lg);
 }
 
+/* ===== ABOUT AREA ===== */
+
+.skills-contact {
+    display: flex;
+    gap: 2rem;
+}
+
+.skills-contact > div,
+.skills-contact > ul {
+    flex: 1;
+}
+
+.contact-item img {
+  filter: invert(1);
+  width: 30px;
+  height: 30px;
+}
+
 /* ===== NOT FOUND AREA ===== */
 
 .chat-not-found {
