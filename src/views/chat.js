@@ -125,6 +125,7 @@ export function renderCharacterChat(characterName) {
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") button.click();
   });
+
   button.addEventListener("click", async () => {
     const userText = input.value;
     if (!isValidMessage(userText)) return;
@@ -132,7 +133,11 @@ export function renderCharacterChat(characterName) {
 
      const typingIndicator = document.getElementById('typingIndicator');
 
-    messagesContainer.innerHTML += `<p class="chat__message--sent"> ${userText}</p>`;
+    const sentMsg = document.createElement('p');
+    sentMsg.className = 'chat__message--sent';
+    sentMsg.textContent = userText;
+    messagesContainer.appendChild(sentMsg);
+
     messagesContainer.appendChild(typingIndicator);
     typingIndicator.style.display = 'flex';
     messagesContainer.scrollTop = messagesContainer.scrollHeight; // scroll al enviar
@@ -140,7 +145,12 @@ export function renderCharacterChat(characterName) {
     const botReply = await sendMessage(userText, characterName);
 
     typingIndicator.style.display = 'none';
-    messagesContainer.innerHTML += `<p class="chat__message--received"> ${botReply}</p>`;
+
+    const receivedMsg = document.createElement('p');
+    receivedMsg.className = 'chat__message--received';
+    receivedMsg.textContent = botReply;
+    messagesContainer.appendChild(receivedMsg);
+    
     messagesContainer.scrollTop = messagesContainer.scrollHeight; // scroll al recibir
   });
 }
