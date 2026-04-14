@@ -2,12 +2,17 @@ import { navigateTo } from "../routes/router.js";
 import { buildHistory, isValidMessage } from "../utils/chatUtils.js";
 
 let history = [];
+const typingIndicator = document.getElementById('typingIndicator');
 
 function resetHistory() {
   history = [];
 }
 
 async function sendMessage(userMessage, characterName) {
+  // Mostrar el indicador
+  typingIndicator.style.display = 'flex';
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
   try {
     const response = await fetch("/api/chatServer", {
       method: "POST",
@@ -30,6 +35,9 @@ async function sendMessage(userMessage, characterName) {
   } catch (error) {
     console.log("Error en fetch:", error);
     return "Error de conexión";
+  }finally {
+    // Siempre ocultarlo, incluso si hay error
+    typingIndicator.style.display = 'none';
   }
 }
 
@@ -129,7 +137,13 @@ export function renderCharacterChat(characterName) {
 
     const botReply = await sendMessage(userText, characterName);
 
-    messagesContainer.innerHTML += `<p class="chat__message--received"> ${botReply}</p>`;
+    messagesContainer.innerHTML += 
+    ` <div class="typing-bubble" id="typingIndicator" style="display: none;">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    <p class="chat__message--received"> ${botReply}</p>`;
     messagesContainer.scrollTop = messagesContainer.scrollHeight; // scroll al recibir
   });
 }
