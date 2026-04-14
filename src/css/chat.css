@@ -139,7 +139,7 @@
 
 .typing-bubble {
   align-self: flex-start;
-  background: #f0f0f0; /* o el color de tus bubbles de bot */
+  background: transparent; /* o el color de tus bubbles de bot */
   border-radius: 18px;
   border-bottom-left-radius: 4px;
   padding: 12px 16px;
@@ -152,7 +152,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: transparent;
+  background: #999;
   animation: bounce 1.2s infinite ease-in-out;
 }
 
