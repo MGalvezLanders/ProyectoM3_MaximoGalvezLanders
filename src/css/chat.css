@@ -52,15 +52,15 @@
 .chat__messages {
   flex: 1;
   padding: var(--space-md);
-  overflow-y: visible;
 
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   overflow-y: auto;
   overflow-x: hidden;
   width: 100%;
   gap: var(--space-sm);
+  min-height: 0;
+  scrollbar-width: none; /* 👈 Firefox */
 }
 
 /* Mensajes */
