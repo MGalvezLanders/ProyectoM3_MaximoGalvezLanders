@@ -19,12 +19,12 @@ async function sendMessage(userMessage, characterName) {
       }), // pasás el personaje
     });
     const data = await response.json();
-
-    history = buildHistory(history, userMessage, data.reply); // Actualizás el historial con el mensaje del usuario y la respuesta del bot
-
+    
     if (!response.ok) {
       return data.error || "Error en el servidor";
     }
+    
+    history = buildHistory(history, userMessage, data.reply); 
 
     return data.reply;
   } catch (error) {
